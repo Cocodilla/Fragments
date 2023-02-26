@@ -1,9 +1,12 @@
 package com.example.fragments;
 
 import androidx.appcompat.app.AppCompatActivity;
-import android.app.Fragment;
-import android.app.FragmentManager;
-import android.app.FragmentTransaction;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
+
+
+
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -25,11 +28,11 @@ public class MainActivity extends AppCompatActivity {
 
         // Fragment specific
 // get fragment Manager to work with fragments
-        FragmentManager fragmentManager = getFragmentManager();
+        FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
         // add fragment to the screen
         FirstFragment firstFragment = FirstFragment.newInstance("1","2");
-        fragmentTransaction.add(R.id.container, firstFragment, "String");
+        fragmentTransaction.add(R.id.container, firstFragment);
         fragmentTransaction.commit();
 
 
@@ -45,7 +48,7 @@ public class MainActivity extends AppCompatActivity {
             }else{
                 newFragment = new SecondFragment();
             }
-            FragmentTransaction transaction = getFragmentManager().beginTransaction();
+            FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
             transaction.replace(R.id.container, newFragment);
             transaction.addToBackStack(null);
             transaction.commit();
